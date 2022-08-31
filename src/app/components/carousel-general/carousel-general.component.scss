@@ -1,4 +1,4 @@
-.custom_overlay_wrapper { position: relative; border:1px solid black; }
+.custom_overlay_wrapper { position: relative }
 
 .custom_overlay {
 	position: absolute;
@@ -11,7 +11,7 @@
 	-moz-transition: all 400ms ease-in-out;
 	-o-transition: all 400ms ease-in-out;
 	transition: all 400ms ease-in-out;
-  
+
 }
 
 .category-name {
