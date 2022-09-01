@@ -20,7 +20,7 @@ export class CarouselBannerComponent implements OnInit {
     }, */
     {
       id:3,
-      src:'assets/images/ecom7.webp',
+      src:'assets/images/ecom8.webp',
       alt:'Image_1',
       // title:'Natural Honey',
       // desc: 'Honey',
