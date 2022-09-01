@@ -7,7 +7,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./carousel-banner.component.scss']
 })
 export class CarouselBannerComponent implements OnInit {
-  
+
   slidesStore = [
     /* {
       id:1,
@@ -20,16 +20,16 @@ export class CarouselBannerComponent implements OnInit {
     }, */
     {
       id:3,
-      src:'assets/images/121121.jpg',
+      src:'assets/images/ecom7.webp',
       alt:'Image_1',
-      title:'Natural Honey',
-      desc: 'Honey',
-      desc1: '100% Organic',
-      desc2: 'free pickup and delivery available CA'
+      // title:'Natural Honey',
+      // desc: 'Honey',
+      // desc1: '100% Organic',
+      // desc2: 'free pickup and delivery available CA'
     },
     // {
     //   id:4,
-    //   src:'assets/images/3234700.jpg',
+    //   src:'assets/images/1975155.jpg',
     //   alt:'Image_1',
     //   title:'Natural Honey',
     //   desc: 'Honey',
@@ -38,7 +38,7 @@ export class CarouselBannerComponent implements OnInit {
     // },
     // {
     //   id:5,
-    //   src:'assets/images/1604298.jpg',
+    //   src:'assets/images/1975176.jpg',
     //   alt:'Image_1',
     //   title:'Natural Honey',
     //   desc: 'Honey',
