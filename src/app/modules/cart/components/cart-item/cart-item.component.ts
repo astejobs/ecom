@@ -3,6 +3,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { BasketItem } from './../../../../shared/classes/BasketItem';
 import { Basket } from 'src/app/shared/classes/Basket';
+import { Product } from 'src/app/shared/classes/product';
 
 @Component({
   selector: 'app-cart-item',
@@ -44,8 +45,11 @@ export class CartItemComponent implements OnInit, OnDestroy {
   }
 
   increaseQuantity(item: BasketItem) {
-    console.log(item);
-    this.cartService.addQty(item.product);
+    console.log("itemmmmmm++++",item);
+    if( item.quantity < parseInt(item.product.productStock)){
+
+      this.cartService.addQty(item.product);
+    }
   }
   reduceQuantity(item: BasketItem) {
     if(item.quantity>1) {

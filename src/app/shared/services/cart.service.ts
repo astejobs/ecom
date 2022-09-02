@@ -181,7 +181,7 @@ export class CartService {
     let shopping_cart = new Basket();
     shopping_cart = JSON.parse(localStorage.getItem('basket'));
     for(let i in shopping_cart.basketItems){
-      if(product.id == shopping_cart.basketItems[i].product.id){
+      if(product.id == shopping_cart.basketItems[i].product.id ){
         shopping_cart.basketItems[i].quantity +=1;
         break;
       }
