@@ -4,8 +4,8 @@
       <div class="cart-items">
         <div class="row mb-4 font-weight-bold show-desktop-only">
           <div class="col-sm-2">Image</div>
-          <div class="col-sm-4">Product Name</div>
-          <div class="col-sm-1">Price</div>
+          <div class="col-sm-3">Product Name</div>
+          <div class="col-sm-2">Price</div>
           <div class="col-sm-2">Quantity</div>
           <div class="col-sm-2">Total</div>
           <div class="col-sm-1"> </div>
@@ -23,11 +23,11 @@
               </a>
             </div>
           </div>
-          <div class="col-sm-4 m-auto">
+          <div class="col-sm-3 m-auto">
             <label class="show-mobile-only">Name: </label>{{item.product.name}}
           </div>
-          <div class="col-sm-1 m-auto">
-            <label class="show-mobile-only">Price: </label>{{item.price |currency:'INR'}}
+          <div class="col-sm-2 m-auto">
+            <label class="show-mobile-only">Price: </label>{{item.product.price |currency:'INR'}}
           </div>
           <div class="col-sm-2 m-auto text-center">
             <label class="show-mobile-only">Quantity: </label>
