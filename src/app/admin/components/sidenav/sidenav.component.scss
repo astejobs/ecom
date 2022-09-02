@@ -2,7 +2,9 @@
   margin-left: 8px;
 }
 .side-menu-panel {
-  background-color: #FF9033;
+  background: #56CCF2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #f0ececde;
 }
 
@@ -10,7 +12,7 @@
   color: #f0ececde;
 }
 ::ng-deep .mat-expansion-indicator::after {
-  color:  #171414 !important;
+  color:  white !important;
 }
 ::ng-deep .mat-expansion-panel-body {
   background-color: white !important;
@@ -20,7 +22,7 @@
   color: rgb(237, 240, 243);
 }
 .mat-list-item:hover {
-  background-color: rgba(221, 138, 69, 0.938);
+  background-color: rgb(20, 111, 168);
   color: aliceblue;
 }
 .items{

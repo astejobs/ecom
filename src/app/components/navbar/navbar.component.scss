@@ -43,7 +43,7 @@
 .navbar-nav .nav-item:hover>.nav-link {
  /*  background-color: rgba(255, 255, 255, 0.411); */
   background-color: none !important;
-  color: #EBA937;
+  color: white;
   width:100%;
   /* background-color: #EBA937; */
 }
@@ -262,7 +262,7 @@ transform:  rotateY(360deg);
   }
 
   .user-li a{
-    border: 1px solid #d89504;
+    border: 1px solid white;
     border-radius: 10px;
     color:black !important;
   }
