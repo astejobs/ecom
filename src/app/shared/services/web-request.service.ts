@@ -53,7 +53,8 @@ export class WebRequestService {
     return this.http.get(`${this.ROOT_URL}/product/${id}`);
   }
 
-  putProduct (id: any, product: any): Observable<any> { console.log("updatimg....pppprrr");
+  putProduct (id: any, product: any): Observable<any>
+   { console.log("updatimg....pppprrr");
     return this.http.put(`${this.ROOT_URL}/product`, product);
   }
 
