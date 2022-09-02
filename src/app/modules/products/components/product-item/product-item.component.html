@@ -18,8 +18,8 @@
       <div class="flip-box-inner">
         <div class="flip-box-front">
           <h5 *ngIf="product?.productStock < 1 " class="text-danger">Out Of Stock</h5>
-          <h5 *ngIf="product?.productStock ==3 && product?.productStock >1 " class="text-success">Only 3 Left </h5>
-          <h5 *ngIf="product?.productStock ==2 && product?.productStock >1 " class="text-success">Only 2 Left </h5>
+          <h5 *ngIf="product?.productStock ==3  " class="text-success">Only 3 Left </h5>
+          <h5 *ngIf="product?.productStock ==2 " class="text-success">Only 2 Left </h5>
           <h5 *ngIf="product?.productStock >3 && product?.productStock <6 " class="text-success">Only Few Left </h5>
 
 
