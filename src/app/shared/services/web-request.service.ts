@@ -89,7 +89,11 @@ export class WebRequestService {
     this.url = this.ROOT_URL+"/category";
     return this.http.get<Category[]>(this.url);
   }
+getProductsByCategory(category:any){
+  this.url =`${this.ROOT_URL}/products/prodOnCat/${category.id}`;
+  return this.http.get(this.url);
 
+}
   saveUnit(unit: any) {
     this.url = this.ROOT_URL+"/unit";
     return this.http.post<any>(this.url, unit);//, {headers: this.headers}

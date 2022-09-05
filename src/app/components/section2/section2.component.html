@@ -1,28 +1,24 @@
-<div class="container-fluid" >
+
+<div class="container mt-5">
   <div class="row">
-    <div class="col-sm-6">
-      <div class="img-contaner mb-4" ><!-- data-aos="slide-right" -->
-        <img class="w-100 "  style="height: 340px;" src="assets/images/HoneyBee.gif">
+    <!-- CARD 1-->
+  <div class="col-lg-4" *ngFor="let category of categories">
+  <a href='#' class="url-box" >
+    <figure class='newsCard news-Slide-up '>
+      <img src="https://source.unsplash.com/1600x900/?ecommerce"/>
+      <div class='newsCaption px-4'>
+      <div class="d-flex align-items-center justify-content-between cnt-title">
+       <h5 class='newsCaption-title text-white m-0'>{{category.name}}</h5>
+       <i (click)="getCat(category)" class="fas fa-arrow-alt-circle-right "></i>
+       </div>
+       <div class='newsCaption-content d-flex '>
+       <p class="col-10 py-3 px-0">{{category.id}} </p>
       </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="jumbotron-section"   >
-
-        <h3 class="text-white">NECTAR FROM NATURE</h3>
-        <div class="section2-text" >
-          <p>
-            Harvested in a sustainable way from wild beehives by our tribal partners, trained by WWF and other organisations. Our cruelty free harvesting harms no honey bees or their hives.
-          </p>
-          <p class="font-weight-bold">
-            We neither add nor remove anything from the honey that's made by the bees.
-          </p>
-          <div class="" >
-            <button  mat-raised-button  routerLink="products">Shop Now </button>
-          </div>
-        </div>
       </div>
+      <span class="overlay"></span>
+    </figure>
+  </a>
+  </div> <!-- end card1-->
 
-    </div>
 
-  </div>
-</div>
+

@@ -26,7 +26,9 @@ export class CategoryService {
   deleteCategory(id: number) {
     return this.apiService.deleteCategory(id);
   }
-
+getproductsByCategory(category:any){
+  return this.apiService.getProductsByCategory(category);
+}
   getAll() {
     return this.apiService.getAllCategories();
   }
