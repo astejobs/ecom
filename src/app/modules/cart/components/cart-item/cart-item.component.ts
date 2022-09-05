@@ -49,6 +49,9 @@ export class CartItemComponent implements OnInit, OnDestroy {
     if( item.quantity < parseInt(item.product.productStock)){
 
       this.cartService.addQty(item.product);
+    }else{
+
+      alert("Max limit exceeded");
     }
   }
   reduceQuantity(item: BasketItem) {
