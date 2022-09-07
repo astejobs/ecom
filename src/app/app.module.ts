@@ -42,6 +42,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { SocialComponent } from './components/social/social.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     DialogComponent,
     MyOrdersComponent,
     InvoiceComponent,
+    SocialComponent,
 
   ],
   imports: [
