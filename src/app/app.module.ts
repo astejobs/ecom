@@ -43,7 +43,6 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

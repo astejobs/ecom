@@ -172,7 +172,7 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
           .subscribe(
               data => {
                 console.log(data);
-                this.toastr.success("Product Added Successfully!", 'Deleted', {
+                this.toastr.success("Product Added Successfully!", 'Successfull', {
                   timeOut: 2000,
                 });
                 this.loading = false;

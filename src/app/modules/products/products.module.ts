@@ -11,13 +11,15 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from 'src/app/shared/pipes/search.pipe';
 @NgModule({
   declarations: [ProductsComponent,
     ProductDetailComponent,
     AllProductsComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    SearchPipe
+
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,9 @@ import { ProductItemComponent } from './components/product-item/product-item.com
     MDBBootstrapModule.forRoot(),
     MaterialModule,
     PipesModule,
-    NgxImageZoomModule
+    NgxImageZoomModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductsModule { }

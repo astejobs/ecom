@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { WebRequestService } from './web-request.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+
+  productByCategory=new BehaviorSubject<any>('');
 
   constructor(private apiService: WebRequestService) { }
 

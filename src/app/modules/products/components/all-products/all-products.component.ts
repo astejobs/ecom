@@ -11,14 +11,25 @@ import { Product } from 'src/app/shared/classes/product';
 export class AllProductsComponent implements OnInit, OnDestroy {
 products: Product[];
 subs: Subscription[] = [];
+searchText:string = '';
+productByCat:Product[]=[];
   constructor(private productService: ProductService) { }
-
   ngOnInit(): void {
-    let s1 = this.productService.getAll().subscribe(products => {
-      this.products = products;
-    });
-    this.subs.push(s1);
+
+    this.subs.push(this.productService.productByCategory.subscribe(result=>{
+      if(result){
+        this.products=result;
+
+      }else{
+        let s1 = this.productService.getAll().subscribe(products => {
+          this.products = products;
+        });
+        this.subs.push(s1);
+      }
+     }))
+
   }
+
 
   ngOnDestroy(): void {
       this.subs.forEach(sub => {
