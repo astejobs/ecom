@@ -17,15 +17,12 @@ productByCat:Product[]=[];
   constructor(private productService: ProductService,
     private categoryService:CategoryService) { }
   ngOnInit(): void {
+    let s1 = this.productService.getAll().subscribe(products => {
+      this.products = products;
+
+    });
+    this.subs.push(s1);
     this.getAllCategories();
-
-
-        let s1 = this.productService.getAll().subscribe(products => {
-          this.products = products;
-        });
-        this.subs.push(s1);
-
-
 
   }
   getAllCategories(){
@@ -37,7 +34,7 @@ productByCat:Product[]=[];
     this.categoryService.getproductsByCategory(product).subscribe((Result:any)=>{
       console.log(Result);
       this.products=Result;
-    })
+    });
 
   }
   ngOnDestroy(): void {
