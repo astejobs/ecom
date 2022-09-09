@@ -13,3 +13,11 @@
 .p-1{
   margin-top: 20% !important;
 }
+ul{
+  cursor: pointer;
+  list-style-type:none;
+}
+li:hover{
+  background-color: lightgray;
+  color:black;
+}

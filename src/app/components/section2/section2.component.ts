@@ -37,16 +37,16 @@ export class Section2Component implements OnInit {
     })
 
   }
-  getCat(product: any) {
-    this.category = product;
-    this.getProducts();
-    console.log("products", product);
+  getCat(category) {
+    this.category = category;
+    this.productService.productByCategory.next(this.category);
+    this.route.navigate(['./products']);
+
   }
   getProducts() {
     this.categoryServ.getproductsByCategory(this.category).subscribe(resp => {
       this.productService.productByCategory.next(resp);
       this.route.navigate(['./products']);
-      console.log("Response...", resp);
     });
   }
 

@@ -14,9 +14,28 @@
     </div>
   </div>
 
+
   <div class="row mb-3">
-    <div class="col-sm-3 p-3" *ngFor="let product of products |search:searchText:'name'">
-      <app-product-item [product]="product"></app-product-item>
+    <div class="col-md-3">
+<div class="card overflow-scroll shadow">
+<div class="card-header bg-dark">
+  <h5 class="text-center text-white">Filter By Category</h5>
+</div>
+<div class="card-body">
+  <ul *ngFor="let category of productByCat" class="list-unstyled">
+    <li (click)="getProductByCat(category)">{{category.name}}</li>
+  </ul>
+</div>
+</div>
+    </div>
+
+      <div class="col-md-9">
+        <div class="row">
+        <div class="col-sm-3 p-3" *ngFor="let product of products |search:searchText:'name'">
+          <app-product-item [product]="product"></app-product-item>
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
