@@ -79,14 +79,14 @@ export class CheckoutComponent implements OnInit {
     this.subs.push(this.cartService.getProducts()
       .subscribe(basket => {
         if (basket != null) {
-          console.log("bbbbbbbb")
+          console.log("basket checkout",basket);
           this.basket = basket;
           if (this.basket.basketItems) {
             this.totalItems = 0;
             this.grandTotal = 0;
             this.basket.basketItems.forEach(item => {
               this.totalItems += item.quantity;
-              this.grandTotal += (item.product.price) * (item.quantity);
+              this.grandTotal += (item.productWeightPr.price) * (item.quantity);
             });
             this.hasItems = true;
           } console.log("Total" + this.grandTotal);
@@ -200,13 +200,15 @@ export class CheckoutComponent implements OnInit {
       order.paymentMode = 'Offline';
       order.paymentStatus = 'not_paid';
       this.basket.basketItems.forEach((item:any) => {
-         const orderProduct = new OdrProduct();
+        const orderProduct = new OdrProduct();
          orderProduct.product=item.product;
          orderProduct.quantity=item.quantity;
+         orderProduct.productWeightPrice = item.productWeightPr;
+
        this.orderedProducts.push(orderProduct);
       });
       order.odrProduct=this.orderedProducts;
-      console.log("orderedproducts...",this.orderedProducts);
+
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           console.log("responseeeee....",res);
@@ -239,10 +241,13 @@ export class CheckoutComponent implements OnInit {
         const orderProduct = new OdrProduct();
         orderProduct.product=item.product;
         orderProduct.quantity=item.quantity;
+        orderProduct.productWeightPrice = item.productWeightPr;
+
+
       this.orderedProducts.push(orderProduct);
      });
      order.odrProduct=this.orderedProducts;
-      console.log(order);
+      console.log("Orders.....",order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           console.log("responseeeee....",res);

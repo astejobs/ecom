@@ -10,15 +10,17 @@ import { CategoryService } from 'src/app/shared/services/category.service';
   styleUrls: ['./all-products.component.scss']
 })
 export class AllProductsComponent implements OnInit, OnDestroy {
-products: Product[];
+products: any[]=[];
 subs: Subscription[] = [];
 searchText:string = '';
 productByCat:Product[]=[];
   constructor(private productService: ProductService,
     private categoryService:CategoryService) { }
+
   ngOnInit(): void {
     let s1 = this.productService.getAll().subscribe(products => {
       this.products = products;
+      console.log("products...",products);
 
     });
     this.subs.push(s1);

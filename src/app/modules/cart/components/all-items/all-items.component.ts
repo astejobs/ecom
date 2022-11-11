@@ -34,7 +34,7 @@ export class AllItemsComponent implements OnInit, OnDestroy {
           this.grandTotal = 0;
           this.basket.basketItems.forEach(item => {
             this.totalItems += item.quantity;
-            this.grandTotal += (item.product.price)*(item.quantity);
+            this.grandTotal += (item.productWeightPr.price)*(item.quantity);
           });
           this.hasItems = true;
         }

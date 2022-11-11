@@ -47,14 +47,19 @@ export class CartService {
       this.cart.next(this.basket);
     }
   }
-  addtoCart(product: Product) {
+  addtoCart(product: any) {
+    console.log("added to cart product......",product);
     let local_storage: Basket;
     let tempBasket = new Basket();
     let basketItem = new BasketItem();
 
     basketItem.product = product;
-    basketItem.price = product.price;
+    basketItem.product.productWeightPrice.forEach((item:any)=>{
+    basketItem.productWeightPr=item;
+    });
+    basketItem.price = basketItem.productWeightPr.price;
     basketItem.quantity = 1;
+    console.log("Basket item....",basketItem);
 
     this.basketItems = [];
     this.basketItems.push(basketItem);
@@ -69,10 +74,12 @@ export class CartService {
     } else {
         console.log("Next Itemmmmmmmmmmm");
         local_storage = JSON.parse(localStorage.getItem('basket'));
-
+        console.log("localStorage>>>>>",local_storage);
         const exist = local_storage.basketItems.find((item) => {
-          return product.id === item.product.id;
+          console.log("Item>>>>>>>>>>",item );
+          return  product.id === item.product.id && (product.productWeightPrice[0].weight == item.productWeightPr.weight) ;
         });
+        console.log("Existing product>>>>>>>>>>",exist);
         if(exist) {
           this.addQty(exist.product);
           return;
@@ -104,11 +111,14 @@ export class CartService {
   }
 
   synchroniseCart(basket: Basket) {
+    console.log("basketitems:::::",basket);
       if(basket?.basketItems) {
-        basket.basketItems.forEach((itemDB, idx) => {
+        basket.basketItems.forEach((itemDB) => {
             if(this.isPresent(itemDB)) {
+              console.log("itemDB.....",itemDB);
               this.basket.basketItems.find((itemLS, index) => {
-                if(itemLS.product.id === itemDB.product.id) {
+                console.log("itemLs....>>>",itemLS);
+                if(itemLS.product.id === itemDB.product.id ) {
                   //itemDB.quantity = itemLS.quantity;
                   this.basket.basketItems[index]=itemDB;
                 }
@@ -156,7 +166,7 @@ export class CartService {
   getTotalPrice() {
     let grandTotal = 0;
     this.basket.basketItems.map((item: BasketItem)=> {
-      grandTotal += (item.product.price*item.quantity);
+      grandTotal += (item.productWeightPr.price*item.quantity);
     });
     return grandTotal;
   }
@@ -177,11 +187,12 @@ export class CartService {
     this.cart.next(this.basket);
   }
 
-  addQty(product: Product) {
+  addQty(product: any) {
+    console.log("add quantity ",product);
     let shopping_cart = new Basket();
     shopping_cart = JSON.parse(localStorage.getItem('basket'));
     for(let i in shopping_cart.basketItems){
-      if(product.id == shopping_cart.basketItems[i].product.id ){
+      if(product.id == shopping_cart.basketItems[i].product.id && (product.productWeightPrice[0].weight==shopping_cart.basketItems[i].product.productWeightPrice[0].weight)  ){
         shopping_cart.basketItems[i].quantity +=1;
         break;
       }
@@ -193,11 +204,11 @@ export class CartService {
       this.storeCartInDB(this.basket);
   }
 
-  removeQty(product: Product) {
+  removeQty(product: any) {
     let shopping_cart = new Basket();
     shopping_cart = JSON.parse(localStorage.getItem('basket'));
     for(let i in shopping_cart.basketItems){
-      if(product.id == shopping_cart.basketItems[i].product.id){
+      if(product.id == shopping_cart.basketItems[i].product.id && (product.productWeightPrice[0].weight==shopping_cart.basketItems[i].product.productWeightPrice[0].weight)){
         shopping_cart.basketItems[i].quantity -=1;
         break;
       }

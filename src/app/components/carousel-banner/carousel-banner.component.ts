@@ -9,7 +9,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class CarouselBannerComponent implements OnInit {
 
   slidesStore = [
-    /* {
+     {
       id:1,
       src:'assets/images/carouselImg1.jpg',
       alt:'Image_1',
@@ -17,34 +17,34 @@ export class CarouselBannerComponent implements OnInit {
       desc: 'Honey',
       desc1: '100% Organic',
       desc2: 'free pickup and delivery available CA'
-    }, */
-    {
-      id:3,
-      src:'assets/images/ecom8.webp',
-      alt:'Image_1',
-      // title:'Natural Honey',
-      // desc: 'Honey',
-      // desc1: '100% Organic',
-      // desc2: 'free pickup and delivery available CA'
     },
     // {
-    //   id:4,
-    //   src:'assets/images/1975155.jpg',
+    //   id:3,
+    //   src:'assets/images/ecom8.webp',
     //   alt:'Image_1',
-    //   title:'Natural Honey',
-    //   desc: 'Honey',
-    //   desc1: '100% Organic',
-    //   desc2: 'free pickup and delivery available CA'
+    //   // title:'Natural Honey',
+    //   // desc: 'Honey',
+    //   // desc1: '100% Organic',
+    //   // desc2: 'free pickup and delivery available CA'
     // },
-    // {
-    //   id:5,
-    //   src:'assets/images/1975176.jpg',
-    //   alt:'Image_1',
-    //   title:'Natural Honey',
-    //   desc: 'Honey',
-    //   desc1: '100% Organic',
-    //   desc2: 'free pickup and delivery available CA'
-    // },
+    {
+      id:4,
+      src:'assets/images/1975155.jpg',
+      alt:'Image_1',
+      title:'Natural Honey',
+      desc: 'Honey',
+      desc1: '100% Organic',
+      desc2: 'free pickup and delivery available CA'
+    },
+    {
+      id:5,
+      src:'assets/images/1975176.jpg',
+      alt:'Image_1',
+      title:'Natural Honey',
+      desc: 'Honey',
+      desc1: '100% Organic',
+      desc2: 'free pickup and delivery available CA'
+    },
     /* {
       id:2,
       src:'assets/images/carouselImg33.jpg',

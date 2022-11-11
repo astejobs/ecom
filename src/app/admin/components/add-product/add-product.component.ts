@@ -31,9 +31,8 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
   categories: Category[]=[];
   productUnits: Unit[]=[];
   hasImage = false;
-
   imageToShow: any;
-
+  formData:FormData;
   imageChangedEvent: any = '';
   croppedImage: any = '';
 
@@ -58,8 +57,20 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
         shortDescription: [''],
         aboutProduct: [''],
         description: ['', [Validators.required, Validators.minLength(5)]],
-        weight: ['', [Validators.required]],
-        price: ['', [Validators.required, Validators.min(0), Validators.pattern(/^[1-9]\d*$/)]],
+        productWeightPrice: new FormArray([
+          new FormGroup({
+            id: new FormControl(''),
+            price: new FormControl(''),
+            weight:new FormControl('')
+
+
+          })
+        ]),
+        // productPrice:this.formBuilder.array([
+        //   this.formBuilder.control('')//, ['', [Validators.required, Validators.min(0), Validators.pattern(/^[1-9]\d*$/)]],
+
+        // ]),
+
         brand: [''],
         flavour: [''],
         packageInfo: [''],
@@ -79,6 +90,23 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
 
   }
+
+
+  addField(){
+   const control = <FormArray>this.productForm.controls['productWeightPrice'];
+   control.push(
+    new FormGroup({
+      id: new FormControl(''),
+
+      price: new FormControl(''),
+      weight: new FormControl('')
+   })
+   );
+  }
+removeField(index){
+  const control = <FormArray>this.productForm.controls['productWeightPrice'];
+control.removeAt(index);
+}
 
   /* getProductImage(imageName: string) {
         this.imageService.getProductImage(imageName).subscribe(data => { console.log(data);
@@ -161,12 +189,14 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
 
    onSubmit(product: any) {
       this.submitted = true;
+
       console.log(product.value); //return;
       // stop here if form is invalid
+
       if (this.productForm.invalid) {
           return;
       }
-
+      console.log("rest...",product);
       this.loading = true;
       this.subs.push(this.productService.addProduct(product.value,this.images)
           .subscribe(
@@ -256,6 +286,7 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
         sub.unsubscribe();
       })
   }
+
 }
 
 

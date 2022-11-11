@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
               private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.getUserBasket();
+   // this.getUserBasket();
 
 
   }
@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
        } else {
          this.basket = res;
          if(this.basket?.basketItems?.length>0) {
-           console.log("Cart Has Items");
+           console.log("Cart Has Items",this.basket);
            this.cartService.synchroniseCart(this.basket);
          } else {
            console.log("No Items");

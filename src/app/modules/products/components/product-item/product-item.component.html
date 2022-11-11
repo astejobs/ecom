@@ -21,7 +21,6 @@
           <h5 *ngIf="product?.productStock ==3 " class="text-success">Only 3 Left </h5>
           <h5 *ngIf="product?.productStock ==2 " class="text-success">Only 2 Left </h5>
           <h5 *ngIf="product?.productStock ==1 " class="text-success">Only 1 Left </h5>
-
           <h5 *ngIf="product?.productStock >3 && product?.productStock <6 " class="text-success">Only Few Left </h5>
 
 
@@ -32,7 +31,7 @@
             {{product?.name}}
           </div>
           <div class="product-price">
-            {{product?.price | currency:'INR'}}
+            {{product?.productWeightPrice[0].price | currency:'INR'}}
           </div>
           <div class="product-discount">
             Discount
@@ -43,7 +42,7 @@
           </div>
         </div>
         <div class="flip-box-back">
-          <button mat-raised-button class="btn-shop sm-100" (click)="addToCart(product)">
+          <button  mat-raised-button class="btn-shop sm-100" (click)="addToCart(product)">
               <mat-icon>add_shopping_cart</mat-icon>
               Add To Cart
           </button>

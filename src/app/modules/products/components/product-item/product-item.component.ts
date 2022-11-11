@@ -11,7 +11,7 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
-@Input() product: Product;
+@Input() product: any;
 cartCount:number=0;
 favouriteCount:number=0;
 
@@ -27,6 +27,8 @@ favouriteCount:number=0;
   }
   addToCart(item: any) {
     this.cartCount++;
+    console.log("....",item);
+
     this.cartService.addtoCart(item);
     this.toastr.success('Click to Checkout', 'Added To Cart', {
       timeOut: 1000,

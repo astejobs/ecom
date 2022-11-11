@@ -27,7 +27,7 @@
             <label class="show-mobile-only">Name: </label>{{item.product.name}}
           </div>
           <div class="col-sm-2 m-auto">
-            <label class="show-mobile-only">Price: </label>{{item.product.price |currency:'INR'}}
+            <label class="show-mobile-only">Price: </label>{{item.productWeightPr.price |currency:'INR'}}
           </div>
           <div class="col-sm-2 m-auto text-center">
             <label class="show-mobile-only">Quantity: </label>
@@ -44,7 +44,7 @@
             </div>
           </div>
           <div class="col-sm-2 m-auto font-weight-bold text-success">
-            <label class="show-mobile-only">Total: </label>{{(item.quantity*item.product.price) |currency:'INR'}}
+            <label class="show-mobile-only">Total: </label>{{(item.quantity*item.productWeightPr.price) |currency:'INR'}}
           </div>
           <div class="col-sm-1 m-auto">
             <button mat-icon-button color="warn" (click)="removeItem(item)">

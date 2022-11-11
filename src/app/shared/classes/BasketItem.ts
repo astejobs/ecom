@@ -1,8 +1,10 @@
 import { Product } from "./product";
+import { Productweightprice } from "./productweightprice";
 
 export class BasketItem {
   id:string;
-  product:Product;
+  product:any;
+  productWeightPr:Productweightprice;
   quantity:number;
   price:number;
 }

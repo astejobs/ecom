@@ -63,9 +63,9 @@ export class WebRequestService {
   }
 
 
-  getAllProducts(): Observable<Product[]> {
+  getAllProducts(): Observable<any[]> {
     this.url = this.ROOT_URL+"/product";
-    return this.http.get<Product[]>(this.url);
+    return this.http.get<any[]>(this.url);
   }
 
   saveCategory(category: any) {

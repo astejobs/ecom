@@ -16,15 +16,14 @@ export class InvoiceComponent implements OnInit {
     this.orderService.Fullorder.subscribe(res => {
       this.order = res;
     });
-    console.log(this.order);
+    console.log("invoice Order...",this.order);
   }
-  goBack(){
-    this.router.navigate(['/products']);
-  }
+
   ngOnInit(): void {
     for(let ord of this.order.odrProduct){
-    let total=(ord.product.price*ord.quantity-(ord.product.price*ord.quantity*ord.product.discount/100));
-    this.total.push(total);
+    let totl = (ord.productWeightPrice.price*ord.quantity-(ord.productWeightPrice.price*ord.quantity*ord.product.discount/100));
+    this.total.push(totl);
+
   }
 
   for(let i=0;i<this.total.length;i++){
@@ -39,11 +38,10 @@ export class InvoiceComponent implements OnInit {
    this.router.navigate(['/home']);
 
   }
-  //   Get(){
-  //     this.orderService.Fullorder.subscribe(res=>{
-  // this.ordd=res;
-  //     });
-  // console.log(this.ordd);
+  goBack(){
+    this.router.navigate(['/products']);
+  }
+
 }
 
 

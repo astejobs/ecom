@@ -92,9 +92,9 @@
         <td>{{ord.product.name}}</td>
         <td>{{ord.product.category.name}}</td>
         <td>{{ord.quantity}}</td>
-        <td>{{ord.product.price}}</td>
+        <td>{{ord.productWeightPrice.price}}</td>
         <td>{{ord.product.discount}}</td>
-        <td>{{ord.product.price*ord.quantity-(ord.product.price*ord.quantity*ord.product.discount/100)| currency:'INR'}}
+        <td>{{ord.productWeightPrice.price*ord.quantity-(ord.productWeightPrice.price*ord.quantity*ord.product.discount/100)| currency:'INR'}}
         </td>
       </tr>
       <tr>

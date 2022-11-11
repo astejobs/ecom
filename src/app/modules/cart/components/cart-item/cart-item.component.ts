@@ -13,7 +13,7 @@ import { Product } from 'src/app/shared/classes/product';
 export class CartItemComponent implements OnInit, OnDestroy {
 
   basket: Basket = new Basket();
-  @Input() basketItems: BasketItem[];
+  @Input() basketItems: any[];
   subs: Subscription[] = [];
   totalItems: number;
   grandTotal: number;
@@ -21,12 +21,13 @@ export class CartItemComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    //this.getBasket();
+    // this.getBasket();
   }
 
   getBasket() {
     this.subs.push(this.cartService.getProducts()
     .subscribe(basket => {
+      console.log("RETTTTTTT....",basket);
       if(basket != null) {
         this.basket = basket; console.log(this.basket);
         if(this.basket.basketItems) {
@@ -34,7 +35,7 @@ export class CartItemComponent implements OnInit, OnDestroy {
           this.grandTotal = 0;
           this.basket.basketItems.forEach(item => {
             this.totalItems += item.quantity;
-            this.grandTotal += (item.price)*(item.quantity);
+            this.grandTotal += (item.productWeightPr.price)*(item.quantity);
           });
           this.hasItems = true;
         }
@@ -46,6 +47,8 @@ export class CartItemComponent implements OnInit, OnDestroy {
 
   increaseQuantity(item: BasketItem) {
     console.log("itemmmmmm++++",item);
+    item.product.productWeightPrice=[];
+    item.product.productWeightPrice[0]=item.productWeightPr;
     if( item.quantity < parseInt(item.product.productStock)){
 
       this.cartService.addQty(item.product);
@@ -55,6 +58,9 @@ export class CartItemComponent implements OnInit, OnDestroy {
     }
   }
   reduceQuantity(item: BasketItem) {
+    console.log("item reduced to:",item);
+    item.product.productWeightPrice=[];
+    item.product.productWeightPrice[0]=item.productWeightPr;
     if(item.quantity>1) {
       this.cartService.removeQty(item.product);
     }
