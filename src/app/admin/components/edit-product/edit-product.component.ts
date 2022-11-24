@@ -12,6 +12,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { Productweightprice } from 'src/app/shared/classes/productweightprice';
 
 @Component({
   selector: 'app-edit-product',
@@ -28,10 +29,11 @@ export class EditProductComponent implements OnInit, OnDestroy {
   loading = false;
   submitted = false;
   imageLimit = 3;
-  product: Product;
+  product: any;
   categories: Category[]=[];
   selectedCategoryId;
   productId;
+  productWeightPrice:Productweightprice;
 
   imageToShow: any;
 
@@ -64,13 +66,23 @@ subs: Subscription[] = [];
         shortDescription: [''],
         aboutProduct: [''],
         description: ['', [Validators.required, Validators.minLength(5)]],
+        productWeightPrice: new FormArray([
+          new FormGroup({
+            id: new FormControl(''),
+            price: new FormControl(''),
+            weight:new FormControl('')
+
+
+          })
+        ]),
         category: this.formBuilder.group({
           id: ['',Validators.required],
           name: ['']
         }),
+
         //unit: this.formBuilder.array([ this.createUnit() ]),
-        weight: ['', [Validators.required]],
-        price: ['', [Validators.required, Validators.min(0), Validators.pattern(/^[1-9]\d*$/)]],
+        // weight: ['', [Validators.required]],
+        // price: ['', [Validators.required, Validators.min(0), Validators.pattern(/^[1-9]\d*$/)]],
         brand: [''],
         flavour: [''],
         packageInfo: [''],
@@ -87,7 +99,8 @@ subs: Subscription[] = [];
         data => {
           this.product = data;
           this.selectedCategoryId = this.product.category.id;
-          console.log(this.product);
+          this.productWeightPrice = data.productWeightPrice;
+          console.log("product...",this.product);
           this.patchProductValues();
         },
         error => {
@@ -103,8 +116,8 @@ subs: Subscription[] = [];
       aboutProduct: this.product.aboutProduct,
       description: this.product.description,
       //unit: this.product.unit,
-      weight: this.product.weight,
-      price: this.product.price,
+      // weight: this.product.weight,
+      // price: this.product.price,
       discount: this.product.discount,
       packageInfo: this.product.packageInfo,
       brand: this.product.brand,
@@ -116,6 +129,12 @@ subs: Subscription[] = [];
       id: this.product.category.id,
       name: this.product.category.name
     });
+    // this.productForm.get("productWeightPrice").patchValue({
+    //   id: this.product.productweightprice.id,
+    //   price: this.product.productweightprice.price,
+    //   weight:this.product.productWeightPrice.weight
+    // });
+    console.log(".........",this.productWeightPrice)
 
   }
 
@@ -269,6 +288,22 @@ subs: Subscription[] = [];
       /* show message */
   }
 
+
+  addField(){
+    const control = <FormArray>this.productForm.controls['productWeightPrice'];
+    control.push(
+     new FormGroup({
+       id: new FormControl(''),
+
+       price: new FormControl(''),
+       weight: new FormControl('')
+    })
+    );
+   }
+ removeField(index){
+   const control = <FormArray>this.productForm.controls['productWeightPrice'];
+ control.removeAt(index);
+ }
   removeProductImage(imgName: string) {
     this.dialogRef = this.dialog.open(ConfirmDialogComponent, {
       disableClose: false
@@ -296,6 +331,7 @@ subs: Subscription[] = [];
     });
 
   }
+
 
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>

@@ -39,6 +39,7 @@ export class ProductDetailComponent implements OnInit {
         this.id = +params['id']; // (+) converts string 'id' to a number
         this.getProduct(this.id);
       }));
+      this.getWeight(250);
   }
 
 
