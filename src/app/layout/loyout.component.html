@@ -6,13 +6,13 @@
       <div class="jumbotron ">
         <img src="../../assets/images//logo_btech.png" class="img-fluid" alt="" srcset="">
       </div>
-        <div class="sidenav-link">
-          <a mat-button routerLink="/">Home</a>
-          <a mat-button routerLink="/products">Shop</a>
-          <a mat-button routerLink="/cart">Cart</a>
-          <a mat-button routerLink="/blog">Blog</a>
-          <a mat-button routerLink="/login">login</a>
-          <a mat-button (click)="logout()">Log Out</a>
+        <div class="sidenav-link"  >
+          <a mat-button routerLink="/" (click)="sidenav.toggle()">Home</a>
+          <a mat-button routerLink="/products" (click)="sidenav.toggle()">Shop</a>
+          <a mat-button routerLink="/cart" (click)="sidenav.toggle()">Cart</a>
+          <a mat-button routerLink="/blog" (click)="sidenav.toggle()">Blog</a>
+          <a mat-button routerLink="/login" (click)="sidenav.toggle()">login</a>
+          <a mat-button (click)="logout()" (click)="sidenav.toggle()">Log Out</a>
         </div>
     </mat-sidenav>
 
